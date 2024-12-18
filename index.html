@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://sandbox.payfast.co.za/onsite/engine.js"></script>
+</head>
+<body>
+    <script>
+            // DO NOT MODIFY THE CODE BELOW
+            
+            // retrieve the uuid that is passed to this file and send it to payfast onsite engine
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const uuid = urlParams.get('uuid');
+            
+            window.payfast_do_onsite_payment({"uuid":uuid}, function (result) {
+                if (result === true) {
+                    // Payment Completed
+                    location.href = 'completed'; // triggers payment completed widget on app
+                }
+                else {
+                    // Payment Window Closed
+                    location.href = 'closed'; // triggers payment cancelled widget on app
+                }
+            }); 
+        </script>
+</body>
+</html>
