@@ -11,15 +11,17 @@
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             const uuid = urlParams.get('uuid');
+            const return_url = urlParams.get('return_url');
+            const cancel_url = urlParams.get('cancel_url');
             
             window.payfast_do_onsite_payment({"uuid":uuid}, function (result) {
                 if (result === true) {
                     // Payment Completed
-                    location.href = 'completed'; // triggers payment completed widget on app
+                    location.href = return_url || 'completed'; // triggers payment completed widget on app
                 }
                 else {
                     // Payment Window Closed
-                    location.href = 'closed'; // triggers payment cancelled widget on app
+                    location.href = cancel_url || 'closed'; // triggers payment cancelled widget on app
                 }
             }); 
         </script>
