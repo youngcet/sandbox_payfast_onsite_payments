@@ -7,12 +7,12 @@
     <script>
             // DO NOT MODIFY THE CODE BELOW
             
-            // retrieve the uuid that is passed to this file and send it to payfast onsite engine
+            // retrieve the url params that are passed to this file and send them to payfast onsite engine
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             const uuid = urlParams.get('uuid');
-            const return_url = urlParams.get('return_url');
-            const cancel_url = urlParams.get('cancel_url');
+            const return_url = urlParams.get('return_url'); // -> add to support web
+            const cancel_url = urlParams.get('cancel_url'); // -> add to support we
 
             window.payfast_do_onsite_payment({"uuid":uuid}, function (result) {
                 if (result === true) {
