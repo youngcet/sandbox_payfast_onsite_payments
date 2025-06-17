@@ -17,7 +17,7 @@
             window.payfast_do_onsite_payment({"uuid":uuid}, function (result) {
                 if (result === true) {
                     // Payment Completed
-                    location.href = decodeURIComponent(return_url) || 'completed'; // triggers payment completed widget on app
+                    location.href = return_url ? decodeURIComponent(return_url) : 'completed'; // triggers payment completed widget on app
                 }
                 else {
                     // Payment Window Closed
