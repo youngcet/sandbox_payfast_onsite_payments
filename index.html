@@ -12,7 +12,7 @@
             const urlParams = new URLSearchParams(queryString);
             const uuid = urlParams.get('uuid');
             const return_url = urlParams.get('return_url'); // -> add to support web
-            const cancel_url = urlParams.get('cancel_url'); // -> add to support we
+            const cancel_url = urlParams.get('cancel_url'); // -> add to support web
 
             window.payfast_do_onsite_payment({"uuid":uuid}, function (result) {
                 if (result === true) {
@@ -21,7 +21,7 @@
                 }
                 else {
                     // Payment Window Closed
-                    location.href = decodeURIComponent(cancel_url) || 'closed'; // triggers payment cancelled widget on app
+                    location.href = cancel_url ? decodeURIComponent(cancel_url) : 'closed'; // triggers payment cancelled widget on app
                 }
             });
         </script>
