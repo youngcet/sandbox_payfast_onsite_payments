@@ -72,11 +72,11 @@ To support the [Payfast's Web package](https://github.com/youngcet/payfast_web),
         window.payfast_do_onsite_payment({"uuid":uuid}, function (result) {
             if (result === true) {
                 // Payment Completed
-                location.href = decodeURIComponent(return_url) || 'completed'; // triggers payment completed widget on app
+                location.href = return_url ? decodeURIComponent(return_url) : 'completed'; // triggers payment completed widget on app
             }
             else {
                 // Payment Window Closed
-                location.href = decodeURIComponent(cancel_url) || 'closed'; // triggers payment cancelled widget on app
+                location.href = cancel_url ? decodeURIComponent(cancel_url) : 'closed'; // triggers payment cancelled widget on app
             }
         });
     </script>
