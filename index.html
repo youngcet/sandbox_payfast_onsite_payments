@@ -14,24 +14,25 @@
             const return_url = urlParams.get('return_url');
             const cancel_url = urlParams.get('cancel_url');
 
-            if (return_url && return_url.trim() !== '' && cancel_url && cancel_url.trim() !== ''){
-                window.payfast_do_onsite_payment({
-                  "uuid":uuid,
-                  "return_url":return_url,
-                  "cancel_url":cancel_url
-                });
-            }else{
-                window.payfast_do_onsite_payment({"uuid":uuid}, function (result) {
-                    if (result === true) {
-                        // Payment Completed
-                        location.href = 'completed'; // triggers payment completed widget on app
-                    }
-                    else {
-                        // Payment Window Closed
-                        location.href = 'closed'; // triggers payment cancelled widget on app
-                    }
-                });
-            }
+            window.payfast_do_onsite_payment({
+              "uuid":uuid,
+              "return_url":return_url,
+              "cancel_url":cancel_url
+            });
+            // if (return_url && return_url.trim() !== '' && cancel_url && cancel_url.trim() !== ''){
+                
+            // }else{
+            //     window.payfast_do_onsite_payment({"uuid":uuid}, function (result) {
+            //         if (result === true) {
+            //             // Payment Completed
+            //             location.href = 'completed'; // triggers payment completed widget on app
+            //         }
+            //         else {
+            //             // Payment Window Closed
+            //             location.href = 'closed'; // triggers payment cancelled widget on app
+            //         }
+            //     });
+            // }
         </script>
 </body>
 </html>
