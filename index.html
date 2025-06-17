@@ -17,11 +17,11 @@
             window.payfast_do_onsite_payment({"uuid":uuid}, function (result) {
                 if (result === true) {
                     // Payment Completed
-                    location.href = return_url || 'completed'; // triggers payment completed widget on app
+                    location.href = decodeURIComponent(return_url) || 'completed'; // triggers payment completed widget on app
                 }
                 else {
                     // Payment Window Closed
-                    location.href = cancel_url || 'closed'; // triggers payment cancelled widget on app
+                    location.href = decodeURIComponent(cancel_url) || 'closed'; // triggers payment cancelled widget on app
                 }
             });
         </script>
