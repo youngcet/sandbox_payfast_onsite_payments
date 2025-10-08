@@ -14,16 +14,22 @@
             const return_url = urlParams.get('return_url'); // -> add to support web
             const cancel_url = urlParams.get('cancel_url'); // -> add to support web
 
-            window.payfast_do_onsite_payment({"uuid":uuid}, function (result) {
-                if (result === true) {
-                    // Payment Completed
-                    location.href = return_url ? decodeURIComponent(return_url) : 'completed'; // triggers payment completed widget on app
-                }
-                else {
-                    // Payment Window Closed
-                    location.href = cancel_url ? decodeURIComponent(cancel_url) : 'closed'; // triggers payment cancelled widget on app
-                }
-            });
+        window.payfast_do_onsite_payment({
+          'uuid':uuid,
+          'return_url': decodeURIComponent(return_url),
+          'cancel_url': decodeURIComponent(cancel_url),
+           'notify_url': 'https://clients.permanentlink.co.za/subscription/notify'  // optional: A payment confirmation notification will be sent to the "notify_url" you specified.
+        });
+            // window.payfast_do_onsite_payment({"uuid":uuid}, function (result) {
+            //     if (result === true) {
+            //         // Payment Completed
+            //         location.href = return_url ? decodeURIComponent(return_url) : 'completed'; // triggers payment completed widget on app
+            //     }
+            //     else {
+            //         // Payment Window Closed
+            //         location.href = cancel_url ? decodeURIComponent(cancel_url) : 'closed'; // triggers payment cancelled widget on app
+            //     }
+            // });
         </script>
 </body>
 </html>
